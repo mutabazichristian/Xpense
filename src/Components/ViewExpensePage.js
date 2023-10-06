@@ -11,10 +11,10 @@ function ViewExpenses() {
                     <h1>View Xpenses</h1>
                 </div>
                 <ExpensesViewer />
-            </div>
-            <div className="search-bar">
-                <input type="text" />
-                <img src={searchIcon} alt="search button" className="btn-search" />
+                <div className="search-bar">
+                    <input type="text" placeholder="search here" />
+                    <img src={searchIcon} alt="search button" className="btn-search" />
+                </div>
             </div>
         </div>
     )

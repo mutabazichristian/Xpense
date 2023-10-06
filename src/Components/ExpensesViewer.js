@@ -4,7 +4,7 @@ function ExpensesViewer(){
     
     return(
         <div className="expenses-viewer">
-            <ul>
+            <ul className="expenses-viewer-filter-list">
                 <li>Title</li>
                 <li>Date</li>
                 <li>Category</li>

@@ -181,42 +181,118 @@ h1 {
 }
 
 .new-expense-form-input {
+  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 10px 0;
-  align-items: center;
 
 }
 
-.new-expense-form-input label{
+.new-expense-form-input label {
   display: flex;
 }
 
-.new-expense-form-input input{
-  display: flex;
-  width: 198px;
-}
-
-.new-expense-form-input select{
+.new-expense-form-input input {
   display: flex;
   width: 198px;
 }
 
-.new-expense-form-input #input{
+.new-expense-form-input select {
+  display: flex;
   width: 198px;
+}
+
+.new-expense-form-input #input {
   align-items: center;
   justify-content: center;
+  width: 198px;
 }
 
-.view-expenses-page {
-  align-items: flex-start;
-  background: #FAFAFA;
+.btn-save-expense {
+  background-color: #FAFAFA;
+  color: #000000;
+  width: 100%;
+}
+
+/*VIEW EXPENSES PAGE*/
+
+.view-expense-page {
+  align-items: center;
+  justify-content: center;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  padding: 10vh 20vh;
   height: 1021px;
-  justify-content: center;
-  padding: 94px 188px;
-  width: 1440px;
+  width: 100%;
+
 }
+
+.view-expenses-container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  height: 863px;
+  gap: 10px;
+}
+
+.view-expenses-title h1 {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  height: 153px;
+  width: 100%;
+}
+
+.expenses-viewer {
+  display: flex;
+  padding: 0px 6px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex: 1 0 0;
+  align-self: stretch;
+  border: 1px solid #000;
+}
+
+.expenses-viewer-filter-list {
+  display: flex;
+  padding: 13px 0px;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  flex: 1 0 0;
+  list-style-type: none;
+}
+
+.expenses-viewer-filter-list li {
+  display: flex;
+  padding: 0px 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #000000;
+}
+
+.search-bar {
+  display: flex;
+  width: 100%;
+  height: 85px;
+  padding: 0px 20px;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  background: #1A1A1A;
+  border-radius: 5px;
+}
+
+.search-bar input {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 0 0;
+  align-self: stretch;
+  background-color: #000000;
+}
+
+/*STATISTICS PAGE*/

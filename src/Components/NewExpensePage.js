@@ -1,9 +1,9 @@
 import React from "react";
 import uploadImage from "../images/uploadIcon.svg"
 
-function NewExpensePage(){
+function NewExpensePage() {
 
-    return(
+    return (
         <div className="new-expense">
             <form action="" className="form">
                 <h1>New Xpense</h1>
@@ -18,7 +18,7 @@ function NewExpensePage(){
                 <div className="new-expense-form-input">
                     <label htmlFor="">Category</label>
                     <select name="category" id="category">
-                         {/*getOptions()*/} 
+                        {/*getOptions()*/}
                     </select>
                 </div>
                 <div className="new-expense-form-input">
@@ -30,6 +30,9 @@ function NewExpensePage(){
                     <div id="input">
                         <img src={uploadImage} alt="upload" />
                     </div>
+                </div>
+                <div className="btn-save-expense">
+                    Save
                 </div>
             </form>
         </div>
