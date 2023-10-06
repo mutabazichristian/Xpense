@@ -1,4 +1,5 @@
 import React from "react";
+import uploadImage from "../images/uploadIcon.svg"
 
 function NewExpensePage(){
 
@@ -6,27 +7,29 @@ function NewExpensePage(){
         <div className="new-expense">
             <form action="" className="form">
                 <h1>New Xpense</h1>
-                <div>
+                <div className="new-expense-form-input">
                     <label htmlFor="">Title/Name</label>
                     <input type="text" />
                 </div>
-                <div>
+                <div className="new-expense-form-input">
                     <label htmlFor="">Amount</label>
                     <input type="number" />
                 </div>
-                <div>
+                <div className="new-expense-form-input">
                     <label htmlFor="">Category</label>
                     <select name="category" id="category">
                          {/*getOptions()*/} 
                     </select>
                 </div>
-                <div>
+                <div className="new-expense-form-input">
                     <label htmlFor="">Date</label>
                     <input type="date" />
                 </div>
-                <div>
+                <div className="new-expense-form-input">
                     <label htmlFor="">Upload Receipt</label>
-                    <input type="text" />
+                    <div id="input">
+                        <img src={uploadImage} alt="upload" />
+                    </div>
                 </div>
             </form>
         </div>
