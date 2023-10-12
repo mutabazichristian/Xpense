@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+.env
 passwordConnect.js
 webpack.config.js
 
