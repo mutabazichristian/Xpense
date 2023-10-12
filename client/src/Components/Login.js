@@ -12,6 +12,7 @@ function Login() {
                 localStorage.setItem("sessionId",res.data.sessionId);
             })
             .catch(err => console.log(err));
+            //redirect
     }
     return (
         <div>

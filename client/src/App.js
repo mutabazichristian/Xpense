@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar"
 import SummaryPage from "./Components/SummaryPage";
 import NewExpensePage from "./Components/NewExpensePage";
@@ -9,24 +10,27 @@ import Login from "./Components/Login";
 //state..
 
 function App() {
-  console.log(localStorage)
-  if (localStorage.sessionId) {
-    return (
-      <div>
-        <Navbar />
-        <SummaryPage />
-        <NewExpensePage />
-        <ViewExpensesPage />
-        <StatisticsPage />
-        <FeedbackPage />
-      </div>
-    )
-  } else {
-    return (
-      <div>
-        <Login />
-      </div>);
-  }
+  const [isLoggedIn, setIsLoggedIn] = useState('false');
+  useEffect(() => {
+    const sessionId = localStorage.getItem('sessionId');
+    setIsLoggedIn(!!sessionId);
+  }, []);
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={isLoggedIn ? (
+          <div>
+            <Navbar />
+            <SummaryPage />
+            <NewExpensePage />
+            <ViewExpensesPage />
+            <StatisticsPage />
+            <FeedbackPage />
+          </div>) :
+          (<Login />)} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
