@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
+import session from 'express-session';
 import mysql from 'mysql';
 import passwordConnect from './passwordConnect.js';
 import { v4 as uuidv4 } from 'uuid';
@@ -16,8 +17,14 @@ var mysqlConnection = mysql.createConnection({
     multipleStatements: true
 })
 mysqlConnection.connect();
+
 app.use(express.json());
 app.use(cors());
+app.use(session({
+    secret: passwordConnect,
+    resave: false,
+    saveUninitialized: true
+}))
 
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);
@@ -30,11 +37,14 @@ app.post('/login', (req, res) => {
         if (err) return res.json('Login Failed');
         if (data.length > 0) {
             //create a session Id
-            const sesssionId = generateSessionId();
+            const sessionId = generateSessionId();
+
+            //store session data
+            req.session.userId = data[0].id;
+            req.session.sessionId = sessionId;
             res.json({
-                sesssionId: sesssionId
-            })
-            return res.json("Log in successfully");
+                sessionId: sessionId
+            });
         } else {
             return res.json('no record')
         }
