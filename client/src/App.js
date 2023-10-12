@@ -6,13 +6,27 @@ import ViewExpensesPage from "./Components/ViewExpensePage";
 import StatisticsPage from "./Components/StatisticsPage";
 import FeedbackPage from "./Components/FeedbackPage";
 import Login from "./Components/Login";
-
+//state..
 
 function App() {
-  return (
-    <div>
-      <Login />
-    </div>);
+  console.log(localStorage)
+  if (localStorage.sessionId) {
+    return (
+      <div>
+        <Navbar />
+        <SummaryPage />
+        <NewExpensePage />
+        <ViewExpensesPage />
+        <StatisticsPage />
+        <FeedbackPage />
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <Login />
+      </div>);
+  }
 }
 
 export default App;

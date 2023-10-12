@@ -9,7 +9,7 @@ function Login() {
         axios.post('http://localhost:8080/login', { email, password })
             .then(res => {
                 console.log(res);
-                localStorage.setItem("sessiionId",res.data.sessionId);
+                localStorage.setItem("sessionId",res.data.sessionId);
             })
             .catch(err => console.log(err));
     }
