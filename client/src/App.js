@@ -10,24 +10,24 @@ import Login from "./Components/Login";
 //state..
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState('false');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   useEffect(() => {
-    const sessionId = localStorage.getItem('sessionId');
-    setIsLoggedIn(!!sessionId);
-  }, []);
+    setIsLoggedIn(localStorage.getItem('sessionId'));
+  }, [isLoggedIn])
+
+  console.log(isLoggedIn)
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={isLoggedIn ? (
-          <div>
-            <Navbar />
-            <SummaryPage />
-            <NewExpensePage />
-            <ViewExpensesPage />
-            <StatisticsPage />
-            <FeedbackPage />
-          </div>) :
-          (<Login />)} />
+        <Route path='/' element={isLoggedIn ? <div>
+          <Navbar />
+          <SummaryPage />
+          <NewExpensePage />
+          <ViewExpensesPage />
+          <StatisticsPage />
+          <FeedbackPage />
+        </div> : <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
       </Routes>
     </BrowserRouter>
   );
