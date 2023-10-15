@@ -11,7 +11,7 @@ import Login from "./Components/Login";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [email, setEmail] = useState('')
   useEffect(() => {
     setIsLoggedIn(localStorage.getItem('sessionId'));
   }, [isLoggedIn])
@@ -24,10 +24,10 @@ function App() {
           <Navbar />
           <SummaryPage />
           <NewExpensePage />
-          <ViewExpensesPage />
+          <ViewExpensesPage email={email} setEmail={setEmail} />
           <StatisticsPage />
           <FeedbackPage />
-        </div> : <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+        </div> : <Login email={email} setEmail={setEmail} sLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
       </Routes>
     </BrowserRouter>
   );

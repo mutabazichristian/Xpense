@@ -4,7 +4,6 @@ import express from 'express';
 import session from 'express-session';
 import mysql from 'mysql';
 import passwordConnect from './passwordConnect.js';
-import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -37,11 +36,12 @@ app.post('/login', (req, res) => {
         if (err) return res.json('Login Failed');
         if (data.length > 0) {
             //create a session Id
-            const sessionId = generateSessionId();
+            const sessionId = req.sessionID();
 
             //store session data
             req.session.userId = data[0].id;
             req.session.sessionId = sessionId;
+            console.log(sessionId)
             res.json({
                 sessionId: sessionId
             });
@@ -49,9 +49,11 @@ app.post('/login', (req, res) => {
             return res.json('no record')
         }
     })
+});
+
+app.post('/expenses', (req, res) => {
+    //get User Id
+    console.log(req.body)
+    console.log(req.sessionID);
+
 })
-
-
-function generateSessionId() {
-    return uuidv4();
-}

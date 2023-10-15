@@ -4,9 +4,8 @@ import axios from 'axios';
 
 function Login(props) {
 
-    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const {isLoggedIn, setIsLoggedIn } = props;
+    const { email, setEmail, isLoggedIn, setIsLoggedIn } = props;
     function handleLogin(event) {
         event.preventDefault();
         axios.post('http://localhost:8080/login', { email, password })
@@ -14,7 +13,9 @@ function Login(props) {
                 console.log(res);
                 localStorage.setItem("sessionId", res.data.sessionId);
                 if (localStorage.getItem('sessionId')) {
-                 setIsLoggedIn(true)
+                    setIsLoggedIn(true)
+                } else {
+                    setIsLoggedIn(false);
                 }
             })
             .catch(err => console.log(err));
