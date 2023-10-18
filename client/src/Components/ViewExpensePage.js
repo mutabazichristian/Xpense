@@ -9,8 +9,8 @@ function ViewExpenses(props) {
     useEffect(() => {
         const sessionId = localStorage.getItem('sessionId');
         console.log(`the sessin id is ${sessionId}`);
-        axios.post('http://localhost:8080/expenses', {sessionId})
-            .then(res => console.log)
+        axios.post('http://localhost:8080/expenses', { sessionId })
+            .then(res => console.log(res))
             .catch(err => console.log(err))
     }, [expenses])
 
@@ -30,4 +30,4 @@ function ViewExpenses(props) {
         </div>
     )
 }
-export default ViewExpenses;
+export default ViewExpenses;    

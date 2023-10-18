@@ -1,59 +1,58 @@
-import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
-import session from 'express-session';
 import mysql from 'mysql';
-import passwordConnect from './passwordConnect.js';
+import tokens from './tokens.js';
+import jwt from 'jsonwebtoken';
 
 const app = express();
-const PORT = process.env.PORT || 8080;
-
-var mysqlConnection = mysql.createConnection({
+const passwordConnect = tokens.passwordConnect;
+const secretKey = tokens.secretKey;
+const options = {
     host: 'localhost',
     user: 'mutabazi',
     password: passwordConnect,
     database: 'xpensedb',
     multipleStatements: true
-})
+
+};
+
+const PORT = process.env.PORT || 8080;
+var mysqlConnection = mysql.createConnection(options)
 mysqlConnection.connect();
+
 
 app.use(express.json());
 app.use(cors());
-app.use(session({
-    secret: passwordConnect,
-    resave: false,
-    saveUninitialized: true
-}))
+
 
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);
 })
 
 app.post('/login', (req, res) => {
+    const { email, password } = req.body;
     const sql = 'SELECT * FROM User WHERE email = ? AND password = ?';
+    mysqlConnection.query(sql, [email, password], (err, user) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        } if (user.length > 0) {
+            const userId = user[0].id;
+            const payload = {
+                userId: userId,
+                email: email
+            }
+            const token = jwt.sign(payload, secretKey, { expiresIn: '3h' });
+            console.log('Generated Token', token);
+            return res.send(token);
 
-    mysqlConnection.query(sql, [req.body.email, req.body.password], (err, data) => {
-        if (err) return res.json('Login Failed');
-        if (data.length > 0) {
-            //create a session Id
-            const sessionId = req.sessionID();
-
-            //store session data
-            req.session.userId = data[0].id;
-            req.session.sessionId = sessionId;
-            console.log(sessionId)
-            res.json({
-                sessionId: sessionId
-            });
         } else {
-            return res.json('no record')
+            return res.status(401).json({ error: 'Invalid credentials' })
         }
-    })
+    });
 });
 
 app.post('/expenses', (req, res) => {
-    //get User Id
-    console.log(req.body)
-    console.log(req.sessionID);
 
-})
+    console.log(req.session);
+});

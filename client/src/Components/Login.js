@@ -12,7 +12,7 @@ function Login(props) {
             .then(res => {
                 console.log(res);
                 localStorage.setItem("sessionId", res.data.sessionId);
-                if (localStorage.getItem('sessionId')) {
+                if (!!localStorage.getItem('sessionId')) {
                     setIsLoggedIn(true)
                 } else {
                     setIsLoggedIn(false);
