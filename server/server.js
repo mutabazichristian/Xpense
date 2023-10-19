@@ -44,9 +44,7 @@ app.post('/login', (req, res) => {
             }
             const token = jwt.sign(payload, secretKey, { expiresIn: '3h' });
             console.log('Generated Token', token);
-            return res.cookie({
-                
-            })
+            return res.cookie('authCookie', token, { maxAge: 900000, httpOnly: true })
 
         } else {
             return res.status(401).json({ error: 'Invalid credentials' })
