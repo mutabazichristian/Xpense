@@ -3,7 +3,9 @@ import express from 'express';
 import mysql from 'mysql';
 import tokens from './tokens.js';
 import jwt from 'jsonwebtoken';
+import cookieParser from 'cookie-parser';
 
+//const cookieParser= require('cookie-parser');
 const app = express();
 const passwordConnect = tokens.passwordConnect;
 const secretKey = tokens.secretKey;
@@ -19,9 +21,10 @@ const options = {
 const PORT = process.env.PORT || 8080;
 var mysqlConnection = mysql.createConnection(options)
 mysqlConnection.connect();
-
+const corsOptions={credentials:true}
 
 app.use(express.json());
+app.use(cookieParser())
 app.use(cors());
 
 
@@ -44,7 +47,15 @@ app.post('/login', (req, res) => {
             }
             const token = jwt.sign(payload, secretKey, { expiresIn: '3h' });
             console.log('Generated Token', token);
-            return res.cookie('authCookie', token, { maxAge: 900000, httpOnly: true })
+            console.log('Given Credentials', email, password);
+             res.cookie('authCookie', token, { maxAge: 900000,httpOnly:false})
+
+            // console.log('cookies',res);
+
+             return res.status(200).cookie('authCookie', token, { maxAge: 900000,httpOnly:false}).json({
+                status:'success login',
+                user:user[0].email
+             })
 
         } else {
             return res.status(401).json({ error: 'Invalid credentials' })
@@ -52,7 +63,8 @@ app.post('/login', (req, res) => {
     });
 });
 
-app.post('/expenses', (req, res) => {
+app.get('/expenses', (req, res) => {
 
+    res.send('okay good to go');
     console.log(req.session);
 });
