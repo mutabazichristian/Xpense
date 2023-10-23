@@ -8,7 +8,7 @@ function DataDisplay(){
                 <li>Date</li>
                 <li>Category</li>
                 <li>Amount</li>
-                <li>Export</li>
+                <li className="export-btn">Export</li>
             </ul>
         </div>
     )
