@@ -8,9 +8,9 @@ function Login(props) {
     const { email, setEmail, cookies } = props;
     async function handleLogin(event) {
         event.preventDefault();
-       await axios.post('http://localhost:8080/login', { email, password })
+        await axios.post('http://localhost:8080/login', { email, password })
             .then(res => {
-                console.log("response from server",res);
+                console.log("response from server", res);
                 //const cookieValue = cookies.get('authCookie');
                 console.log('the cookie value is', cookies);
                 //cookies.set('authCookie', cookieValue);
@@ -20,11 +20,11 @@ function Login(props) {
 
     useEffect(() => {
 
-        const getExpenses= async()=>{
-             await axios.get('http://localhost:8080/login').then((res)=>{
-                console.log('res...',res);
-            }).catch(err=>{
-                console.log('err',err);
+        const getExpenses = async () => {
+            await axios.get('http://localhost:8080/login').then((res) => {
+                console.log('res...', res);
+            }).catch(err => {
+                console.log('err', err);
             })
         }
 

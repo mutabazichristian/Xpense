@@ -5,12 +5,14 @@ import axios from "axios";
 
 function ViewExpenses(props) {
     const [expenses, setExpense] = useState([]);
-    const { email, setEmail } = props;
+
     useEffect(() => {
         const sessionId = localStorage.getItem('sessionId');
-        console.log(`the sessin id is ${sessionId}`);
-        axios.post('http://localhost:8080/expenses', { sessionId })
-            .then(res => console.log(res))
+        axios.post('http://localhost:8080/expenses')
+            .then(res => {
+                const expenses = res.data;
+                console.log(expenses);
+            })
             .catch(err => console.log(err))
     }, [expenses])
 
