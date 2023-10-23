@@ -75,3 +75,8 @@ app.post('/expenses', (req, res) => {
         }
     });
 });
+
+app.post('/newexpense',(req,res)=>{
+    console.log(req.body);
+    res.json('we good we good')
+});
