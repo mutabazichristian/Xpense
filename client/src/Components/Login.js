@@ -1,26 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
 
 
 function Login(props) {
 
     const [password, setPassword] = useState('');
-    const { email, setEmail, isLoggedIn, setIsLoggedIn } = props;
-    function handleLogin(event) {
+    const { email, setEmail, cookies } = props;
+    async function handleLogin(event) {
         event.preventDefault();
-        axios.post('http://localhost:8080/login', { email, password })
+       await axios.post('http://localhost:8080/login', { email, password })
             .then(res => {
-                console.log(res);
-                localStorage.setItem("sessionId", res.data.sessionId);
-                if (!!localStorage.getItem('sessionId')) {
-                    setIsLoggedIn(true)
-                } else {
-                    setIsLoggedIn(false);
-                }
+                console.log("response from server",res);
+                //const cookieValue = cookies.get('authCookie');
+                console.log('the cookie value is', cookies);
+                //cookies.set('authCookie', cookieValue);
             })
             .catch(err => console.log(err));
-        //redirect
     }
+
+    useEffect(() => {
+
+        const getExpenses= async()=>{
+             await axios.get('http://localhost:8080/login').then((res)=>{
+                console.log('res...',res);
+            }).catch(err=>{
+                console.log('err',err);
+            })
+        }
+
+        getExpenses();
+
+    }, [])
     return (
         <div>
             <form onSubmit={handleLogin}>

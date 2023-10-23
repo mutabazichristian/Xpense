@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Cookies, useCookies } from 'react-cookie';
 import Navbar from "./Components/Navbar"
 import SummaryPage from "./Components/SummaryPage";
 import NewExpensePage from "./Components/NewExpensePage";
@@ -10,27 +11,43 @@ import Login from "./Components/Login";
 //state..
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState('')
-  useEffect(() => {
-    setIsLoggedIn(localStorage.getItem('sessionId'));
-  }, [isLoggedIn])
+  const [cookies, setCookies] = useCookies(['authCookie']);
+  console.log('in the app we are accessing the cookie', cookies);
 
-  console.log(isLoggedIn)
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={isLoggedIn ? <div>
+        <Route path="/" element={<div>
           <Navbar />
           <SummaryPage />
           <NewExpensePage />
           <ViewExpensesPage email={email} setEmail={setEmail} />
           <StatisticsPage />
           <FeedbackPage />
-        </div> : <Login email={email} setEmail={setEmail} sLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+
+        </div>}>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+{/* <Route path='/' element={
+          false ?
+            <div>
+              <Navbar />
+              <SummaryPage />
+              <NewExpensePage />
+              <ViewExpensesPage email={email} setEmail={setEmail} />
+              <StatisticsPage />
+              <FeedbackPage />
+            </div>
+            :
+            <Login
+              email={email} setEmail={setEmail} cookies={cookies}
+            />
+        }
+        />
+     */}
