@@ -386,3 +386,70 @@ h1 {
 }
 
 /*FEEDBACK PAGE*/
+.feedback-page {
+  display: flex;
+  width: 100%;
+  height: 1024px;
+  padding: 114px 160px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.feedback-container {
+  display: flex;
+  height: 863px;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.feedback-container h1 {
+  width: 100%;
+  margin-top: 50px;
+  height: 153px;
+  flex-shrink: 0;
+}
+
+.feedback-container p {
+  color: #000;
+}
+
+.feedback-form {
+  flex: 1 0 0;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: none;
+  border: 1px solid #000;
+}
+
+.feedback-text-area {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+}
+
+.btn-send-feedback {
+  display: flex;
+  width: 620px;
+  height: 84px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: #1A1A1A;
+  margin-bottom: 10px;
+}
+
+.btn-new-expense:focus{
+  border: none;
+}

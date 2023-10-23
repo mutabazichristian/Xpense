@@ -9,7 +9,7 @@ function FeedbackPage() {
                     <p>We value your feedback. It helps us make Xpense more useful.</p>
                 </h1>
                 <form action="" className="feedback-form">
-                    <input type="text" className="feebdback-text-are" placeholder="Tell me anything"/>
+                    <input type="text" className="feedback-text-area" placeholder="Tell me anything"/>
                     <button className="btn-send-feedback">Send</button>
                 </form>
             </div>
