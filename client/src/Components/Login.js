@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import instance from "../API";
+import {useNavigate} from 'react-router-dom'
 
 
 function Login(props) {
-
+    const navigate=useNavigate();
     const [password, setPassword] = useState('');
-    const { email, setEmail, cookies } = props;
+    const { email, setEmail} = props;
     async function handleLogin(event) {
         event.preventDefault();
-        await axios.post('http://localhost:8080/login', { email, password })
+        await instance.post('/login', { email, password })
             .then(res => {
+
                 console.log("response from server", res);
-                //const cookieValue = cookies.get('authCookie');
-                console.log('the cookie value is', cookies);
-                //cookies.set('authCookie', cookieValue);
+                navigate('/')
             })
             .catch(err => console.log(err));
     }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const getExpenses = async () => {
-            await axios.get('http://localhost:8080/login').then((res) => {
-                console.log('res...', res);
-            }).catch(err => {
-                console.log('err', err);
-            })
-        }
+    //     const getExpenses = async () => {
+    //         await axios.get('http://localhost:8080/login').then((res) => {
+    //             console.log('res...', res);
+    //         }).catch(err => {
+    //             console.log('err', err);
+    //         })
+    //     }
 
-        getExpenses();
+    //     getExpenses();
 
-    }, [])
+    // }, [])
     return (
         <div>
             <form onSubmit={handleLogin}>

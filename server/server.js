@@ -47,14 +47,15 @@ app.post('/login', (req, res) => {
             }
             const token = jwt.sign(payload, secretKey, { expiresIn: '3h' });
             console.log('Generated Token', token);
-            console.log('Given Credentials', email, password);
+
             res.cookie('authCookie', token, { maxAge: 900000, httpOnly: false })
 
-            // console.log('cookies',res);
+    
 
-            return res.status(200).cookie('authCookie', token, { maxAge: 900000, httpOnly: false }).json({
+            return res.status(200).json({
                 status: 'success login',
-                user: user[0].email
+                user: user[0].email,
+                token
             })
 
         } else {
