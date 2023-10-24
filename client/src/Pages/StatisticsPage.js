@@ -1,5 +1,5 @@
 import React from "react";
-import DataDisplay from "./DataDisplay";
+import DataDisplay from "../Components/DataDisplay";
 
 function StatisticsPage() {
 

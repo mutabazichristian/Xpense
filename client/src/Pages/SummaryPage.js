@@ -1,5 +1,5 @@
 import React from "react";
-import ExpensesSummary from "./ExpensesSummary";
+import ExpensesSummary from "../Components/ExpensesSummary";
 
 function SummaryPage(){
 

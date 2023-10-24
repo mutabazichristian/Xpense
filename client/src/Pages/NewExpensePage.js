@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import uploadImage from "../images/uploadIcon.svg"
+import uploadImage from "../Assets/uploadIcon.svg"
 import axios from 'axios';
+
 
 function NewExpensePage(props) {
     var newExpenseData = [];
@@ -8,13 +9,13 @@ function NewExpensePage(props) {
         setExpenseTitle, setExpenseAmount, setExpenseCategory, setExpenseDate, setExpenseImage } = props;
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('these are the values', expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage);
         newExpenseData = [expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage]
+        const token = localStorage.ge
         axios.post('http://localhost:8080/newexpense', { newExpenseData })
-        .then(res=>{
-            console.log(res);
-        })
-        .catch(err=>console.log(err))
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => console.log(err))
     }
 
     return (

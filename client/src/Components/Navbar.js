@@ -1,5 +1,5 @@
 import React from "react";
-import profileImage from "../images/profileImage.svg"
+import profileImage from "../Assets/profileImage.svg"
 import ListNavigationList from "./ListNavigation";
 import BtnNewExpense from "./BtnNewExpense";
 

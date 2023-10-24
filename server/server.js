@@ -79,5 +79,8 @@ app.post('/expenses', (req, res) => {
 
 app.post('/newexpense',(req,res)=>{
     console.log(req.body);
+    const queryNewExpense = 'INSERT INTO Expense';
+
     res.json('we good we good')
+
 });

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ExpensesViewer from "./ExpensesViewer";
-import searchIcon from "../images/icon-search.svg"
+import ExpensesViewer from "../Components/ExpensesViewer";
+import searchIcon from "../Assets/icon-search.svg"
 import axios from "axios";
 
 function ViewExpenses(props) {
