@@ -6,11 +6,12 @@ import axios from 'axios';
 function NewExpensePage(props) {
     var newExpenseData = [];
     const { expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage,
-        setExpenseTitle, setExpenseAmount, setExpenseCategory, setExpenseDate, setExpenseImage } = props;
+        setExpenseTitle, setExpenseAmount, setExpenseCategory, setExpenseDate, setExpenseImage,
+        expenseDescription, setExpenseDescription } = props;
     const handleSubmit = (event) => {
         event.preventDefault();
-        newExpenseData = [expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage]
-        const token = localStorage.ge
+        newExpenseData = [expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage, expenseDescription]
+
         axios.post('http://localhost:8080/newexpense', { newExpenseData })
             .then(res => {
                 console.log(res);
@@ -49,6 +50,12 @@ function NewExpensePage(props) {
                     <label htmlFor="">Date</label>
                     <input type="date" value={expenseDate} onChange={(e) => {
                         setExpenseDate(e.target.value)
+                    }} />
+                </div>
+                <div className="new-expense-form-input">
+                    <label htmlFor="">Description</label>
+                    <input type="text" value={expenseDescription} onChange={(e) => {
+                        setExpenseDescription(e.target.value)
                     }} />
                 </div>
                 <div className="new-expense-form-input">

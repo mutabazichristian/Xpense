@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import instance from "../API";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 function Login(props) {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const [password, setPassword] = useState('');
-    const { email, setEmail} = props;
+    const { email, setEmail } = props;
     async function handleLogin(event) {
         event.preventDefault();
         await instance.post('/login', { email, password })
@@ -14,23 +14,11 @@ function Login(props) {
 
                 console.log("response from server", res);
                 navigate('/')
+                
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log('error from server',err));
     }
 
-    // useEffect(() => {
-
-    //     const getExpenses = async () => {
-    //         await axios.get('http://localhost:8080/login').then((res) => {
-    //             console.log('res...', res);
-    //         }).catch(err => {
-    //             console.log('err', err);
-    //         })
-    //     }
-
-    //     getExpenses();
-
-    // }, [])
     return (
         <div>
             <form onSubmit={handleLogin}>
@@ -43,3 +31,16 @@ function Login(props) {
 }
 
 export default Login;   
+            // useEffect(() => {
+        
+            //     const getExpenses = async () => {
+            //         await axios.get('http://localhost:8080/login').then((res) => {
+            //             console.log('res...', res);
+            //         }).catch(err => {
+            //             console.log('err', err);
+            //         })
+            //     }
+        
+            //     getExpenses();
+        
+            // }, [])

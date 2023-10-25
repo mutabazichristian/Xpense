@@ -4,6 +4,7 @@ import mysql from 'mysql';
 import tokens from './tokens.js';
 import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
+import { nanoid } from 'nanoid';
 
 //const cookieParser= require('cookie-parser');
 const app = express();
@@ -21,7 +22,10 @@ const options = {
 const PORT = process.env.PORT || 8080;
 var mysqlConnection = mysql.createConnection(options)
 mysqlConnection.connect();
-const corsOptions = { credentials: true }
+const corsOptions = {
+    credentials: true,
+    origin: 'http://localhost:3000'
+}
 
 app.use(express.json());
 app.use(cookieParser())
@@ -33,6 +37,7 @@ app.listen(PORT, () => {
 })
 
 app.post('/login', (req, res) => {
+    console.log("Log in requested");
     const { email, password } = req.body;
     const sql = 'SELECT * FROM User WHERE email = ? AND password = ?';
     mysqlConnection.query(sql, [email, password], (err, user) => {
@@ -50,7 +55,7 @@ app.post('/login', (req, res) => {
 
             res.cookie('authCookie', token, { maxAge: 900000, httpOnly: false })
 
-    
+
 
             return res.status(200).json({
                 status: 'success login',
@@ -77,10 +82,26 @@ app.post('/expenses', (req, res) => {
     });
 });
 
-app.post('/newexpense',(req,res)=>{
+app.post('/newexpense', (req, res) => {
     console.log(req.body);
-    const queryNewExpense = 'INSERT INTO Expense';
+    const userid = 1;
+    const title = req.body[0];
+    const amount = req.body[1];
+    const category = req.body[2];
+    const date = req.body[3];
+    const receiptImage = req.body[4]
+    const description = req.body[5];
+    const queryNewExpense = 'INSERT INTO Expense Values (? , ? , ? , ? , ? , ?, ? )';
+
+    mysqlConnection.query(queryNewExpense, [userid, title, amount, category, date, receiptImage, description], (error, result) => {
+        if (error) {
+            console.log(error);
+        } if (result) {
+            console.log(result);
+        }
+    })
 
     res.json('we good we good')
 
 });
+

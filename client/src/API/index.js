@@ -3,7 +3,6 @@ import Cookie from 'js-cookie';
 
 const instance = axios.create({
   baseURL: 'http://localhost:8080',
-  withCredentials: 'true'
 })
 
 instance.interceptors.response.use(function (response) {
@@ -22,19 +21,19 @@ instance.interceptors.response.use(function (response) {
   return Promise.reject(error);
 });
 
-instance.interceptors.request.use(function (request) {
-  const token = Cookie.get('auth');
-  if (token && token !== '') {
-    request.body = {
-      ...request.body,
-      token : token
-    }
-  }
-  return request;
-}, function (error) {
-  console.log('this is an interceptor error', error);
-}
-)
+// instance.interceptors.request.use(function (request) {
+//   const token = Cookie.get('auth');
+//   if (token && token !== '') {
+//     request.body = {
+//       ...request.body,
+//       token : token
+//     }
+//   }
+//   return request;
+// }, function (error) {
+//   console.log('this is an interceptor error', error);
+// }
+// )
 
 
-export default instance
+export default instance;
