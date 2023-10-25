@@ -13,6 +13,8 @@ const HomePage = () => {
     const [expenseDate, setExpenseDate] = useState('');
     const [expenseImage, setExpenseImage] = useState(null);
     const [expenseDescription, setExpenseDescription] = useState('');
+    
+
     return (
         <div>
             <Navbar />

@@ -1,9 +1,9 @@
 import React from "react";
 
-function BtnNewExpense(){
-
+function BtnNewExpense(props){
+    const {scrollToNewExpense}= props
     return(
-        <div className="btn-new-expense">
+        <div onClick={scrollToNewExpense} className="btn-new-expense">
             <p>+ New Expense</p>
         </div>
     )
