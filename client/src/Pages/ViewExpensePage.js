@@ -4,17 +4,19 @@ import searchIcon from "../Assets/icon-search.svg"
 import axios from "axios";
 
 function ViewExpenses(props) {
-    const [expenses, setExpense] = useState([]);
+    const { expenses, setExpenses } = props
 
     useEffect(() => {
         const sessionId = localStorage.getItem('sessionId');
         axios.post('http://localhost:8080/expenses')
             .then(res => {
-                const expenses = res.data;
-                console.log(expenses);
+                const responseExpenses = res.data;
+                const expenseArray = Object.values(responseExpenses)
+                setExpenses([...expenses, expenseArray]);
+                console.log('this is the array', expenseArray);
             })
             .catch(err => console.log(err))
-    }, [expenses])
+    }, [])
 
 
     return (
@@ -23,7 +25,7 @@ function ViewExpenses(props) {
                 <div className="view-expenses-title">
                     <h1>View Xpenses</h1>
                 </div>
-                <ExpensesViewer />
+                <ExpensesViewer expenses={expenses} />
                 <div className="search-bar">
                     <input type="text" placeholder="search here" />
                     <img src={searchIcon} alt="search button" className="btn-search" />

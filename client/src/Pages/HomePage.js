@@ -13,7 +13,8 @@ const HomePage = () => {
     const [expenseDate, setExpenseDate] = useState('');
     const [expenseImage, setExpenseImage] = useState(null);
     const [expenseDescription, setExpenseDescription] = useState('');
-    
+    const [expenses, setExpenses] = useState([]);
+
 
     return (
         <div>
@@ -23,8 +24,9 @@ const HomePage = () => {
                 expenseTitle={expenseTitle} expenseAmount={expenseAmount} expenseCategory={expenseCategory} expenseDate={expenseDate} expenseImage={expenseImage}
                 setExpenseAmount={setExpenseAmount} setExpenseTitle={setExpenseTitle} setExpenseCategory={setExpenseCategory}
                 setExpenseDate={setExpenseDate} setExpenseImage={setExpenseImage} expenseDescription={expenseDescription} setExpenseDescription={setExpenseDescription}
+                expenses={expenses} setExpenses={setExpenses}
             />
-            <ViewExpensesPage />
+            <ViewExpensesPage expenses={expenses} setExpenses={setExpenses} />
             <StatisticsPage />
             <FeedbackPage />
         </div>

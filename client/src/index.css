@@ -249,6 +249,7 @@ h1 {
   padding: 0px 6px;
   justify-content: space-between;
   align-items: flex-start;
+  flex-direction: column;
   flex: 1 0 0;
   align-self: stretch;
   border: 1px solid #000;
@@ -260,9 +261,9 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 100px;
-  flex: 1 0 0;
   list-style-type: none;
 }
+
 
 .expenses-viewer-filter-list li {
   display: flex;
@@ -272,6 +273,8 @@ h1 {
   gap: 10px;
   color: #000000;
 }
+
+
 
 .search-bar {
   display: flex;
@@ -450,6 +453,6 @@ h1 {
   margin-bottom: 10px;
 }
 
-.btn-new-expense:focus{
+.btn-new-expense:focus {
   border: none;
 }

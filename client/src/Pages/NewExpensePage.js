@@ -7,7 +7,7 @@ function NewExpensePage(props) {
     var newExpenseData = [];
     const { expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage,
         setExpenseTitle, setExpenseAmount, setExpenseCategory, setExpenseDate, setExpenseImage,
-        expenseDescription, setExpenseDescription } = props;
+        expenseDescription, setExpenseDescription, expenses, setExpenses } = props;
     const handleSubmit = (event) => {
         event.preventDefault();
         newExpenseData = [expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage, expenseDescription]
@@ -17,6 +17,16 @@ function NewExpensePage(props) {
                 console.log(res);
             })
             .catch(err => console.log(err))
+
+        axios.post('http://localhost:8080/expenses')
+            .then(res => {
+                const responseExpenses = res.data;
+                const expenseArray = Object.values(responseExpenses)
+                setExpenses([...expenses, expenseArray]);
+                console.log('this is the array', expenseArray);
+            })
+            .catch(err => console.log(err))
+
     }
 
     return (
@@ -27,19 +37,19 @@ function NewExpensePage(props) {
                     Noooooooooo
                 </div> */}
                 <div className="new-expense-form-input">
-                    <label htmlFor="">Title/Name</label>
+                    <label >Title/Name</label>
                     <input type="text" value={expenseTitle} onChange={(e) => {
                         setExpenseTitle(e.target.value)
                     }} />
                 </div>
                 <div className="new-expense-form-input">
-                    <label htmlFor="">Amount</label>
+                    <label >Amount</label>
                     <input type="number" value={expenseAmount} onChange={(e) => {
                         setExpenseAmount(e.target.value)
                     }} />
                 </div>
                 <div className="new-expense-form-input">
-                    <label htmlFor="">Category</label>
+                    <label >Category</label>
                     <select name="category" value={expenseCategory} id="category" onChange={(e) => {
                         setExpenseCategory(e.target.value)
                     }}>
@@ -47,19 +57,19 @@ function NewExpensePage(props) {
                     </select>
                 </div>
                 <div className="new-expense-form-input">
-                    <label htmlFor="">Date</label>
+                    <label >Date</label>
                     <input type="date" value={expenseDate} onChange={(e) => {
                         setExpenseDate(e.target.value)
                     }} />
                 </div>
                 <div className="new-expense-form-input">
-                    <label htmlFor="">Description</label>
+                    <label >Description</label>
                     <input type="text" value={expenseDescription} onChange={(e) => {
                         setExpenseDescription(e.target.value)
                     }} />
                 </div>
                 <div className="new-expense-form-input">
-                    <label htmlFor="">Upload Receipt</label>
+                    <label >Upload Receipt</label>
                     <div id="input" value={expenseImage} onChange={(e) => {
                         setExpenseImage(e.target.value)
                     }}>

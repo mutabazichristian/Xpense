@@ -9,7 +9,7 @@ function Navbar() {
         <div className="navbar" >
             <img src={profileImage} alt="profile" />
             <ListNavigationList />
-            <BtnNewExpense scrollToNewExpense={scrollToNewExpense} />
+            <BtnNewExpense />
         </div>
     )
 }

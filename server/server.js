@@ -77,7 +77,7 @@ app.post('/expenses', (req, res) => {
             console.log(`the error message from query is ${error}`);
         } if (result.length > 0) {
             const expenses = result[0];
-            res.send(expenses);
+            res.json(expenses);
         }
     });
 });
@@ -85,23 +85,33 @@ app.post('/expenses', (req, res) => {
 app.post('/newexpense', (req, res) => {
     console.log(req.body);
     const userid = 1;
-    const title = req.body[0];
-    const amount = req.body[1];
-    const category = req.body[2];
-    const date = req.body[3];
-    const receiptImage = req.body[4]
-    const description = req.body[5];
-    const queryNewExpense = 'INSERT INTO Expense Values (? , ? , ? , ? , ? , ?, ? )';
+    const title = req.body.newExpenseData[0];
+    const category = req.body.newExpenseData[1];
+    const amount = req.body.newExpenseData[2];
+    const date = req.body.newExpenseData[3];
+    var receiptImage;
+    if (req.body.newExpenseData[4] && req.body.newExpenseData[4] !== "" && req.body.newExpenseData[4] !== null) {
+
+        receiptImage = req.body.newExpenseData[4];
+    } else {
+        receiptImage = '';
+    }
+    const description = req.body.newExpenseData[5];
+    const queryNewExpense = 'INSERT INTO Expense (userId, title, category, amount, dateCreated, receipt, expenseDescription) Values (? , ? , ? , ? , ? , ?, ? )';
+    console.log(userid, title, category, amount, date, receiptImage, description)
+
+
 
     mysqlConnection.query(queryNewExpense, [userid, title, amount, category, date, receiptImage, description], (error, result) => {
         if (error) {
             console.log(error);
+            res.status(400);
         } if (result) {
             console.log(result);
+            res.json('we good we good');
         }
     })
 
-    res.json('we good we good')
 
 });
 
