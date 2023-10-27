@@ -1,7 +1,6 @@
 import React from "react";
 
-function ExpensesViewer(props) {
-    const { expenses } = props;
+function ExpensesViewer({expenses}) {
     const deleteHandler = () => {
 
     }
@@ -16,17 +15,18 @@ function ExpensesViewer(props) {
                 <li>Description</li>
             </ul>
             <table className="expenses-viewer-filter-list2">
-                {expenses.map(expenses => (
-                    <tr key={expenses[1]} className="expense-component">
-                        <td>{expenses[0]}</td>
-                        <td>{expenses[1]}</td>
-                        <td>{expenses[2]}</td>
-                        <td>{expenses[3]}</td>
-                        <td>{expenses[4]}</td>
-                        <td>{expenses[5]}</td>
+                {expenses.map(expense => (
+                    <tr key={expense[0]}>
+                        <td>{expense[0]}</td>
+                        <td>{expense[1]}</td>
+                        <td>{expense[2]}</td>
+                        <td>{new Date(expense[3]).toLocaleDateString()}</td>
+                        <td>View Receipt</td>
+                        {expense[5] && <td>{expense[5]}</td>}
                         <td><button onClick={deleteHandler}>delete</button></td>
                     </tr>
                 ))}
+
             </table>
         </div>
     )

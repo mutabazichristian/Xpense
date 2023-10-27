@@ -273,7 +273,9 @@ h1 {
   gap: 10px;
   color: #000000;
 }
-
+.expenses-viewer-filter-list2{
+  width: 100%;
+}
 
 
 .search-bar {

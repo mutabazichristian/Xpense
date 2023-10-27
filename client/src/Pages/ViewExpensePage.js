@@ -10,10 +10,7 @@ function ViewExpenses(props) {
         const sessionId = localStorage.getItem('sessionId');
         axios.post('http://localhost:8080/expenses')
             .then(res => {
-                const responseExpenses = res.data;
-                const expenseArray = Object.values(responseExpenses)
-                setExpenses([...expenses, expenseArray]);
-                console.log('this is the array', expenseArray);
+                setExpenses(res.data);
             })
             .catch(err => console.log(err))
     }, [])

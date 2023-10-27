@@ -20,10 +20,7 @@ function NewExpensePage(props) {
 
         axios.post('http://localhost:8080/expenses')
             .then(res => {
-                const responseExpenses = res.data;
-                const expenseArray = Object.values(responseExpenses)
-                setExpenses([...expenses, expenseArray]);
-                console.log('this is the array', expenseArray);
+                setExpenses(res.data);
             })
             .catch(err => console.log(err))
 
@@ -53,7 +50,11 @@ function NewExpensePage(props) {
                     <select name="category" value={expenseCategory} id="category" onChange={(e) => {
                         setExpenseCategory(e.target.value)
                     }}>
-                        {/*getOptions()*/}
+                        <option value="food">food</option>
+                        <option value="transport">transport</option>
+                        <option value="clothes">clothes</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="others">others</option>
                     </select>
                 </div>
                 <div className="new-expense-form-input">

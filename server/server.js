@@ -76,8 +76,18 @@ app.post('/expenses', (req, res) => {
         if (error) {
             console.log(`the error message from query is ${error}`);
         } if (result.length > 0) {
-            const expenses = result[0];
-            res.json(expenses);
+            const expenses = result.map(row => {
+                return [
+                    row.title,
+                    row.category,
+                    row.amount,
+                    row.date,
+                    row.receipt,
+                    row.description
+                ];
+            })
+            console.log(expenses);
+            res.json(expenses)
         }
     });
 });
