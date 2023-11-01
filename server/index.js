@@ -6,11 +6,12 @@ import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
 import { nanoid } from 'nanoid';
 
+
 //const cookieParser= require('cookie-parser');
 const app = express();
 const passwordConnect = tokens.passwordConnect;
 const secretKey = tokens.secretKey;
-const options = {
+const dbOptions = {
     host: 'localhost',
     user: 'mutabazi',
     password: passwordConnect,
@@ -20,7 +21,7 @@ const options = {
 };
 
 const PORT = process.env.PORT || 8080;
-var mysqlConnection = mysql.createConnection(options)
+var mysqlConnection = mysql.createConnection(dbOptions)
 mysqlConnection.connect();
 const corsOptions = {
     credentials: true,
@@ -76,6 +77,7 @@ app.post('/expenses', (req, res) => {
         if (error) {
             console.log(`the error message from query is ${error}`);
         } if (result.length > 0) {
+            console.log(result)
             const expenses = result.map(row => {
                 return [
                     row.title,
@@ -83,16 +85,17 @@ app.post('/expenses', (req, res) => {
                     row.amount,
                     row.date,
                     row.receipt,
-                    row.description
+                    row.description,
+                    row.expenseId
                 ];
             })
-            console.log(expenses);
             res.json(expenses)
         }
     });
 });
 
 app.post('/newexpense', (req, res) => {
+
     console.log(req.body);
     const userid = 1;
     const title = req.body.newExpenseData[0];
@@ -125,3 +128,17 @@ app.post('/newexpense', (req, res) => {
 
 });
 
+app.post('/deleteexpense', (req, res) => {
+    const queryDeleteExpense = 'DELETE FROM Expense WHERE ? = expenseId';
+    console.log('this is the id to be deleted', req.body);
+    const id = req.body.id;
+    mysqlConnection.query(queryDeleteExpense, [id], (err, results) => {
+        if (err) {
+            console.log(err);
+            res.json('error from server:', err);
+        } if (results) {
+            console.log(results);
+            res.json('couldve worked');
+        }
+    })
+})
