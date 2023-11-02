@@ -1,0 +1,29 @@
+UIX tasks
+1. Reworking (Expense Viewer, New Expense)
+2. Feedback Text Box
+3. Light on Dark and vice versa
+4. Landing Page
+5. Introduction Page
+6. Settings Page
+7. Notifications after actions (Exceeding Expense Limit,  )
+8. Data Visualization (Chartjs)
+9. Illustrations to Fill Empty Spaces
+10. Fonts and shit
+11. Move the Profile Picture somewhere on the right
+12. AutoScroll of Nav bar
+
+Backend Tasks
+1. CRUD, User
+2. CRUD, UserAdmin
+3. CRUD, SystemAdmin
+4. Session checking for each User
+5. Session checking for UserAdmin
+6. Sesssion checking for SystemAdmin 
+7. Setting Page CRUD
+8. Turn everything into MVC Model
+9. Deploy and host project
+
+Immediate Tasks
+2. Finish CRUD for User
+3. Set up different routes for different Users
+4. Implement MVC

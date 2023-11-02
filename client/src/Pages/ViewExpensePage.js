@@ -9,7 +9,11 @@ function ViewExpenses(props) {
     const refreshExpenses = () => {
         axios.post('http://localhost:8080/expenses')
             .then(res => {
-                setExpenses(res.data);
+                if (res.data != []) {
+                    setExpenses(res.data)
+                } else {
+                    setExpenses([]);
+                }
             })
             .catch(err => console.log(err))
 
