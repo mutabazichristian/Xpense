@@ -1,8 +1,10 @@
-import axios from "axios";
 import React from "react";
+import EditPopover from './EditPopover'
 
-function ExpensesViewer({expenses,deleteHandler}) {
-    
+function ExpensesViewer(props) {
+    const { expenses, setExpenses, expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage,
+        setExpenseTitle, setExpenseAmount, setExpenseCategory, setExpenseDate, setExpenseImage,
+        expenseDescription, setExpenseDescription, deleteHandler, updateHandler } = props;
     console.log(expenses);
     return (
         <div className="expenses-viewer">
@@ -26,6 +28,12 @@ function ExpensesViewer({expenses,deleteHandler}) {
                         <td>View Receipt</td>
                         {expense[5] && <td>{expense[5]}</td>}
                         <td><button onClick={() => deleteHandler(expense[6])}>delete</button></td>
+                        <td><EditPopover updateHandler={updateHandler} expense={expense} expenses={expenses} setExpenses={setExpenses}
+                            expenseTitle={expenseTitle} expenseAmount={expenseAmount} expenseCategory={expenseCategory} expenseDate={expenseDate} expenseImage={expenseImage}
+                            setExpenseAmount={setExpenseAmount} setExpenseTitle={setExpenseTitle} setExpenseCategory={setExpenseCategory}
+                            setExpenseDate={setExpenseDate} setExpenseImage={setExpenseImage} expenseDescription={expenseDescription} setExpenseDescription={setExpenseDescription} deleteHandler={deleteHandler}
+
+                        /></td>
                     </tr>
                 ))}
 

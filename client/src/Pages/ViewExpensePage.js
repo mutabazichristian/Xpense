@@ -4,7 +4,9 @@ import searchIcon from "../Assets/icon-search.svg"
 import axios from "axios";
 
 function ViewExpenses(props) {
-    const { expenses, setExpenses } = props
+    const { expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage,
+        setExpenseTitle, setExpenseAmount, setExpenseCategory, setExpenseDate, setExpenseImage,
+        expenseDescription, setExpenseDescription, expenses, setExpenses } = props;
 
     const refreshExpenses = () => {
         axios.post('http://localhost:8080/expenses')
@@ -28,6 +30,11 @@ function ViewExpenses(props) {
             })
             .catch(err => console.log(err))
     }
+    const updateHandler = (event, id, expense) => {
+        event.preventDefault();
+        console.log('update this id', id);
+        console.log('new data to be sent',expense);
+    }
     useEffect(refreshExpenses, [])
     return (
         <div className="view-expense-page">
@@ -35,7 +42,11 @@ function ViewExpenses(props) {
                 <div className="view-expenses-title">
                     <h1>View Xpenses</h1>
                 </div>
-                <ExpensesViewer expenses={expenses} deleteHandler={deleteHandler} />
+                <ExpensesViewer setExpenses={setExpenses}
+                    expenseTitle={expenseTitle} expenseAmount={expenseAmount} expenseCategory={expenseCategory} expenseDate={expenseDate} expenseImage={expenseImage}
+                    setExpenseAmount={setExpenseAmount} setExpenseTitle={setExpenseTitle} setExpenseCategory={setExpenseCategory}
+                    setExpenseDate={setExpenseDate} setExpenseImage={setExpenseImage} expenseDescription={expenseDescription} setExpenseDescription={setExpenseDescription} updateHandler={updateHandler}
+                    expenses={expenses} />
                 <div className="search-bar">
                     <input type="text" placeholder="search here" />
                     <img src={searchIcon} alt="search button" className="btn-search" />

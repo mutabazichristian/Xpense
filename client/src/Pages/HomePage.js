@@ -26,7 +26,11 @@ const HomePage = () => {
                 setExpenseDate={setExpenseDate} setExpenseImage={setExpenseImage} expenseDescription={expenseDescription} setExpenseDescription={setExpenseDescription}
                 expenses={expenses} setExpenses={setExpenses}
             />
-            <ViewExpensesPage expenses={expenses} setExpenses={setExpenses} />
+            <ViewExpensesPage expenses={expenses} setExpenses={setExpenses}
+                expenseTitle={expenseTitle} expenseAmount={expenseAmount} expenseCategory={expenseCategory} expenseDate={expenseDate} expenseImage={expenseImage}
+                setExpenseAmount={setExpenseAmount} setExpenseTitle={setExpenseTitle} setExpenseCategory={setExpenseCategory}
+                setExpenseDate={setExpenseDate} setExpenseImage={setExpenseImage} expenseDescription={expenseDescription} setExpenseDescription={setExpenseDescription}
+            />
             <StatisticsPage />
             <FeedbackPage />
         </div>
