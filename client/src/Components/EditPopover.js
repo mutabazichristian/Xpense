@@ -3,7 +3,7 @@ import { Popover } from '@headlessui/react';
 import uploadImage from '../Assets/uploadIcon.svg'
 
 function EditPopover(props) {
-    const { expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage,
+    const {expense, expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage,
         setExpenseTitle, setExpenseAmount, setExpenseCategory, setExpenseDate, setExpenseImage,
         expenseDescription, setExpenseDescription, updateHandler} = props;
     return (
