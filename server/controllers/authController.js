@@ -1,5 +1,6 @@
 import mysqlConnection from "./../config/DB/index.js";
 import tokens from "./../config/tokens.js";
+import jwt from 'jsonwebtoken';
 
 const secretKey = tokens.secretKey;
 

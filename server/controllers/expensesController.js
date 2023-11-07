@@ -64,18 +64,19 @@ const getAllExpenses = (req, res) => {
 
 const deleteExpense = (req, res) => {
 	const queryDeleteExpense = "DELETE FROM Expense WHERE ? = expenseId";
-	console.log("this is the id to be deleted", req.body);
+	console.log("this is the body of req to be deleted", req);
 	const id = req.body.id;
-	mysqlConnection.query(queryDeleteExpense, [id], (err, results) => {
-		if (err) {
-			console.log(err);
-			res.json("error from server:", err);
-		}
-		if (results) {
-			console.log(results);
-			res.json("couldve worked");
-		}
-	});
+	console.log(id);
+	// 	mysqlConnection.query(queryDeleteExpense, [id], (err, results) => {
+	// 		if (err) {
+	// 			console.log(err);
+	// 			res.json("error from server:", err);
+	// 		}
+	// 		if (results) {
+	// 			console.log(results);
+	// 			res.json("couldve worked");
+	// 		}
+	// 	});
 };
 
 export { createExpenses, getAllExpenses, deleteExpense };
