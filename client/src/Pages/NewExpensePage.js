@@ -11,6 +11,7 @@ function NewExpensePage(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         newExpenseData = [expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage, expenseDescription]
+        console.log('new data is',newExpenseData);
 
         axios.post('http://localhost:8080/newexpense', { newExpenseData })
             .then(res => {

@@ -14,3 +14,4 @@ var mysqlConnection = mysql.createConnection(dbOptions);
 mysqlConnection.connect();
 
 export default mysqlConnection;
+ 

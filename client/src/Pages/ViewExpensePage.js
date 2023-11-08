@@ -9,7 +9,7 @@ function ViewExpenses(props) {
         expenseDescription, setExpenseDescription, expenses, setExpenses } = props;
 
     const refreshExpenses = () => {
-        axios.post('http://localhost:8080/expenses')
+        axios.get('http://localhost:8080/expenses')
             .then(res => {
                 if (res.data != []) {
                     setExpenses(res.data)
@@ -21,8 +21,8 @@ function ViewExpenses(props) {
 
     }
     const deleteHandler = (id) => {
-        console.log(id);
-        axios.post('http://localhost:8080/deleteexpense', { id })
+        console.log('Id for deletion',id);
+        axios.delete('http://localhost:8080/expenses', { id })
             .then(res => {
                 console.log(res);
                 //refresh the expenses list
@@ -33,7 +33,7 @@ function ViewExpenses(props) {
     const updateHandler = (event, id, expense) => {
         event.preventDefault();
         console.log('update this id', id);
-        console.log('new data to be sent',expense);
+        console.log('new data to be sent', expense);
     }
     useEffect(refreshExpenses, [])
     return (
@@ -46,7 +46,7 @@ function ViewExpenses(props) {
                     expenseTitle={expenseTitle} expenseAmount={expenseAmount} expenseCategory={expenseCategory} expenseDate={expenseDate} expenseImage={expenseImage}
                     setExpenseAmount={setExpenseAmount} setExpenseTitle={setExpenseTitle} setExpenseCategory={setExpenseCategory}
                     setExpenseDate={setExpenseDate} setExpenseImage={setExpenseImage} expenseDescription={expenseDescription} setExpenseDescription={setExpenseDescription} updateHandler={updateHandler}
-                    expenses={expenses} />
+                    expenses={expenses} deleteHandler={deleteHandler} />
                 <div className="search-bar">
                     <input type="text" placeholder="search here" />
                     <img src={searchIcon} alt="search button" className="btn-search" />

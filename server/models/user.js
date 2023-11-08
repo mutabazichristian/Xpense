@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const feedback = require('./feedback');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -11,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(expense)
+      this.hasMany(expense);
+      this.hasMany(feedback);
     }
   }
   User.init({
