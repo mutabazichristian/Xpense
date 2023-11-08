@@ -1,6 +1,6 @@
 //EXPENSES CONTROLLER
 import mysqlConnection from "./../config/DB/index.js"
-import {Expense} from './../models/index.js';
+import Expense from './../models/expense.js';
 
 const createExpenses = async (req, res) => {
 	const userid = 1;
@@ -11,7 +11,7 @@ const createExpenses = async (req, res) => {
 	var receiptImage;
 
 
-	const newExpense= await Expense.create({userid,title})
+	const newExpense = await Expense.create({ userid, title })
 
 
 	if (
