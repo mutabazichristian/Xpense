@@ -1,6 +1,9 @@
 'use strict';
 import { Model, DataTypes } from 'sequelize';
 import User from './user.js'
+import db from './index.js'
+
+const { sequelize } = db;
 
 class Expense extends Model {
   /**

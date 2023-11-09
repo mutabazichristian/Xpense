@@ -1,6 +1,10 @@
 'use strict';
 import { Model, DataTypes } from 'sequelize';
-import Feedback from './feedback';
+import Feedback from './feedback.js';
+import db from './index.js';
+
+const { sequelize } = db;
+
 class User extends Model {
   /**
    * Helper method for defining associations.

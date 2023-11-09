@@ -1,5 +1,9 @@
 'use strict';
-import { Model, DataType } from "sequelize";
+import { Model, DataTypes } from "sequelize";
+import User from './user.js'
+import db from './index.js'
+
+const {sequelize} = db;
 
 class Feedback extends Model {
   /**
@@ -14,7 +18,7 @@ class Feedback extends Model {
 }
 
 
-feedback.init({
+Feedback.init({
   feedbackId: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -23,11 +27,7 @@ feedback.init({
   dateCreated: DataTypes.DATE,
   content: DataTypes.TEXT,
   userId: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: User,
-      key: 'userId'
-    }
+    type: DataTypes.INTEGER
   }
 }, {
   sequelize,
