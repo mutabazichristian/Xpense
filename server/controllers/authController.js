@@ -6,17 +6,13 @@ import User from '../models/user.js'
 const secretKey = tokens.secretKey;
 
 const login = async (req, res) => {
-	const { email, password } = req.body;
 	try {
-		const userCredentials = await User.findOne({
-			where: {
-				email: email
-			}
-		})
-		console.log(userCredentials);
+		console.log('wokring')
+		res.json("working")
 	}
 	catch (error) {
-		console.log(err)
+		console.log(error)
+		console.log("error");
 	}
 
 	// const sql = "SELECT * FROM User WHERE email = ? AND password = ?";
