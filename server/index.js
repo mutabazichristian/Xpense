@@ -3,18 +3,19 @@ import express, { query } from "express";
 import cookieParser from "cookie-parser";
 import sequelizeConnection from "./config/DB/database.js";
 import expensesRouter from "./routes/expensesRouter.js";
+import userRouter from './routes/userRouter.js'
+
 console.log("Hi");
 // import userRouter from "./routes/userRouter.js";
 
 const app = express();
-// app.use(bodyParser.json());
-// app.use(cors(corsOptions));
-// app.use('/login', userRouter);
-// app.use('/expenses', expensesRouter);
+app.use(cors(corsOptions));
+app.use('/login', userRouter);
+app.use('/expenses', expensesRouter);
 const PORT = process.env.PORT || 8080;
-// var corsOptions = {
-// 	origin: 'http://localhost:8080/'
-// };
+var corsOptions = {
+	origin: 'http://localhost:8080/'
+};
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}.`);
