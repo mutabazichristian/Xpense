@@ -1,9 +1,9 @@
 "use strict";
-import fs from "fs";
-import path from "path";
-import process from "process";
-import Sequelize from "sequelize";
-import config from "../config/config.js";
+const fs = require('fs');
+const path = require('path');
+const process = require('process');
+const Sequelize = require('sequelize');
+const config = require('../config/config.js');
 
 const db = {};
 const __dirname = path.resolve();
@@ -52,3 +52,9 @@ db.Sequelize = Sequelize;
 console.log("this is db", db);
 
 export default db;
+
+// import fs from "fs";
+// import path from "path";
+// import process from "process";
+// import Sequelize from "sequelize";
+// import config from "../config/config.js";
