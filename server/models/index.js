@@ -4,7 +4,7 @@ import path from 'path';
 import process from 'process';
 import Sequelize from 'sequelize';
 import { fileURLToPath } from 'url';
-import config from '../config/config.json' assert {type: 'json' };
+import config from '../config/config.js'; 
 
 const db = {};
 const __filename = fileURLToPath(import.meta.url);
