@@ -1,10 +1,10 @@
 //EXPENSES CONTROLLER
-import mysqlConnection from "./../config/DB/index.js"
-import Expense from './../models/expense.js';
+import mysqlConnection from "./../config/DB/index.js";
+//import { Expense } from "./../models/index.cjs";
 
 const createExpenses = async (req, res) => {
-	console.log('create expense controller here!')
-	res.json('working');
+	console.log("create expense controller here!");
+	res.json("working");
 	// const userid = 1;
 	// const title = req.body.newExpenseData[0];
 	// const category = req.body.newExpenseData[1];
@@ -12,9 +12,7 @@ const createExpenses = async (req, res) => {
 	// const date = req.body.newExpenseData[3];
 	// var receiptImage;
 
-
 	// const newExpense = await Expense.create({ userid, title })
-
 
 	// if (
 	// 	req.body.newExpenseData[4] &&
@@ -68,7 +66,7 @@ const getAllExpenses = async (req, res) => {
 	// 		res.json(expenses);
 	// 	}
 	// });
-	res.json('still working');
+	res.json("still working");
 };
 
 const deleteExpense = async (req, res) => {
@@ -86,7 +84,7 @@ const deleteExpense = async (req, res) => {
 	// 			res.json("couldve worked");
 	// 		}
 	// 	});
-	res.json('working');
+	res.json("working");
 };
 
 export { createExpenses, getAllExpenses, deleteExpense };

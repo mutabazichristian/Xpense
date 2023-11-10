@@ -1,17 +1,16 @@
 import mysqlConnection from "./../config/DB/index.js";
 import tokens from "./../config/tokens.js";
-import jwt from 'jsonwebtoken';
-import User from '../models/user.js'
+import jwt from "jsonwebtoken";
+import { User } from "../models/index.cjs";
 
 const secretKey = tokens.secretKey;
 
 const login = async (req, res) => {
 	try {
-		console.log('wokring')
-		res.json("working")
-	}
-	catch (error) {
-		console.log(error)
+		console.log("wokring");
+		res.json("working");
+	} catch (error) {
+		console.log(error);
 		console.log("error");
 	}
 

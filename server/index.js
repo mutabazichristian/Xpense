@@ -3,7 +3,7 @@ import express, { query } from "express";
 import cookieParser from "cookie-parser";
 import sequelizeConnection from "./config/DB/database.js";
 import expensesRouter from "./routes/expensesRouter.js";
-console.log('Hi');
+console.log("Hi");
 // import userRouter from "./routes/userRouter.js";
 
 const app = express();
@@ -11,11 +11,10 @@ const app = express();
 // app.use(cors(corsOptions));
 // app.use('/login', userRouter);
 // app.use('/expenses', expensesRouter);
-// const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 // var corsOptions = {
 // 	origin: 'http://localhost:8080/'
 // };
-
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}.`);
@@ -23,14 +22,9 @@ app.listen(PORT, () => {
 
 // parse requests of content-type - application/json
 
-
-
-
-
 // parse requests of content-type - application/x-www-form-urlencoded
 
 // app.use(bodyParser.urlencoded({ extended: true }));
-
 
 // const express = require('express');
 // const bodyParser = require('body-parser');
@@ -46,16 +40,13 @@ app.listen(PORT, () => {
 // app.use(cookieParser());
 // app.use(cors());
 
-
 // app.use("/login", userRouter);
 // app.use("/signup", userRouter);
 // app.use("/expenses", expensesRouter);
 
-
 // console.log("trying the db connnection...");
 
-
-// sequelizeConnection.authenticate();	
+// sequelizeConnection.authenticate();
 // console.log('connection established;');
 
 // app.listen(PORT, () => {
