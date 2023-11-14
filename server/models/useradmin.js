@@ -1,8 +1,7 @@
 'use strict';
-import { DataTypes, Model } from "sequelize";
-import db from './index.js';
+const { DataTypes, Model } =require ("sequelize");
 
-const {sequelize} = db;
+module.exports=(sequelize,DataTypes)=>{
 
 class UserAdmin extends Model {
   /**
@@ -28,4 +27,6 @@ UserAdmin.init({
   modelName: 'UserAdmin',
 });
 
-export default UserAdmin;
+return UserAdmin
+
+}

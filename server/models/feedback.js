@@ -1,10 +1,8 @@
 'use strict';
-import { Model, DataTypes } from "sequelize";
-import User from './user.js'
-import db from './index.js'
+const { Model, DataTypes } =require("sequelize");
 
-const {sequelize} = db;
 
+module.exports=(sequelize,DataTypes)=>{
 class Feedback extends Model {
   /**
    * Helper method for defining associations.
@@ -13,7 +11,7 @@ class Feedback extends Model {
    */
   static associate(models) {
     // define association here
-    this.belongsTo(models.User, { foreignKey: userId })
+    this.belongsTo(models.User, { foreignKey: "userId" })
   }
 }
 
@@ -28,10 +26,24 @@ Feedback.init({
   content: DataTypes.TEXT,
   userId: {
     type: DataTypes.INTEGER
-  }
+  },
+   createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+    
 }, {
   sequelize,
   modelName: 'feedback',
+  timestamps:true
 });
 
-export default Feedback;
+return Feedback;
+
+}

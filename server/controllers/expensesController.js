@@ -1,6 +1,7 @@
 //EXPENSES CONTROLLER
-import mysqlConnection from "./../config/DB/index.js";
-//import { Expense } from "./../models/index.cjs";
+// import mysqlConnection from "./../config/DB/index.js";
+
+// import { Expense } from "./../models/index.cjs";
 
 const createExpenses = async (req, res) => {
 	console.log("create expense controller here!");
@@ -87,4 +88,5 @@ const deleteExpense = async (req, res) => {
 	res.json("working");
 };
 
-export { createExpenses, getAllExpenses, deleteExpense };
+// export { createExpenses, getAllExpenses, deleteExpense };
+module.exports = { createExpenses, getAllExpenses, deleteExpense };

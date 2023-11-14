@@ -4,4 +4,4 @@ const createNewUser = async (req, res) => {
 
 }
 
-export  { createNewUser };
+module.exports =  { createNewUser };

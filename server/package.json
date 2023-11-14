@@ -2,14 +2,21 @@
   "name": "xpense-backend",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "db": "sequelize db:migrate && sequelize db:seed:all",
+    "predb": "npm dist",
+    "predist": "rm -rf dist",
+    "postdist": "node setup-dist.js"
   },
   "author": "mutabazi",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/register": "^7.16.0",
+    "babel": "^6.23.0",
     "babel-loader": "^9.1.3",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",

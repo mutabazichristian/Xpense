@@ -1,10 +1,11 @@
-import cors from "cors";
-import express, { query } from "express";
-import cookieParser from "cookie-parser";
-import sequelizeConnection from "./config/DB/database.js";
-import expensesRouter from "./routes/expensesRouter.js";
-import signupRouter from './routes/signupRouter.js'
-import userRouter from './routes/userRouter.js'
+const cors = require('cors');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const sequelizeConnection = require('./config/DB/database.js');
+const expensesRouter = require('./routes/signupRouter.js');
+const signupRouter = require('./routes/signupRouter.js');
+const userRouter = require('./routes/userRouter.js');
+
 console.log("Hi");
 // import userRouter from "./routes/userRouter.js";
 
@@ -12,17 +13,30 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 var corsOptions = {
-origin: 'http://localhost:8080/'
+	origin: 'http://localhost:3000'
 };
-
 app.use(cors(corsOptions));
 app.use('/login', userRouter);
 app.use('/expenses', expensesRouter);
-app.use('/signup',signupRouter);
+console.log(userRouter);
+app.use('/signup', signupRouter);
 
-app.listen(PORT, () => {
-	console.log(`Server is running on port ${PORT}.`);
-});
+
+
+sequelizeConnection.authenticate()
+	.then(() => {
+		console.log('Database connection has been established succesfully');
+		return sequelizeConnection.sync();
+	})
+	.then(() => {
+		app.listen(PORT, () => {
+			console.log(`Server is running on port ${PORT}.`);
+		});
+
+	})
+	.catch((error) => {
+		console.log('unable to connnect to db', error);
+	})
 
 
 // app.use(express.json());

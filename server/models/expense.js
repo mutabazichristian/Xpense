@@ -1,9 +1,8 @@
 'use strict';
-import { Model, DataTypes } from 'sequelize';
-import User from './user.js'
-import db from './index.js'
+const{ Model, DataTypes } =require ('sequelize');
 
-const { sequelize } = db;
+
+module.exports=(sequelize,DataTypes)=>{
 
 class Expense extends Model {
   /**
@@ -13,7 +12,7 @@ class Expense extends Model {
    */
   static associate(models) {
     // define association here
-    this.belongsTo(models.User, { foreignKey: userId })
+    this.belongsTo(models.User, { foreignKey: "userId" })
   }
 }
 
@@ -25,22 +24,31 @@ Expense.init({
     allowNull: false
   },
   userId: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: User,
-      key: 'userId'
-    }
+    type: DataTypes.INTEGER
   },
-  title: DataTypes.VARCHAR,
-  category: DataTypes.VARCHAR,
+  title: DataTypes.STRING,
+  category: DataTypes.STRING,
   amount: DataTypes.INTEGER,
-  dateCreated: DataTypes.date,
+  dateCreated: DataTypes.DATE,
   receipt: DataTypes.BLOB,
-  expenseDescription: DataTypes.VARCHAR
+  expenseDescription: DataTypes.STRING,
+   createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+    
 }, {
   sequelize,
   modelName: 'Expense',
+  timestamps:true
 });
 
+return Expense;
 
-export default Expense;
+}

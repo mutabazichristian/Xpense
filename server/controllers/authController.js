@@ -1,24 +1,32 @@
-import mysqlConnection from "./../config/DB/index.js";
-import tokens from "./../config/tokens.js";
-import jwt from "jsonwebtoken";
-import dpkg from "../models/index.cjs";
-const { User } = dpkg;
+const express = require('express');
+const mysqlConnection = require('../config/DB/index.js');
+const tokens = require('../config/tokens.js');
+const jwt = require('jsonwebtoken');
+const { User } = require('../models/index.js');
 
 const secretKey = tokens.secretKey;
 
+
 const login = async (req, res) => {
 	try {
-		console.log("wokring");
-		res.json("working");
+		console.log("tryna log in huh?");
+
+		const users = await User.findAll();
+		console.log('the users are', users)
+		// Perform your login logic here and potentially set the 'error' variable
+		// Example: const error = await someAsyncFunction();
+
 	} catch (error) {
 		console.log(error);
-		console.log("error");
+		return res.status(500).json({ message: 'Internal Server Error' });
 	}
+
+
 
 	// const sql = "SELECT * FROM User WHERE email = ? AND password = ?";
 	// mysqlConnection.query(sql, [email, password], (err, user) => {
 	// 	if (err) {
-	// 		console.log(err);
+	// 		console.log(err);k
 	// 		return res.status(500).json({ error: "Internal Server Error" });
 	// 	}
 	// 	if (user.length > 0) {
@@ -43,4 +51,4 @@ const login = async (req, res) => {
 	// });
 };
 
-export { login };
+module.exports = { login };

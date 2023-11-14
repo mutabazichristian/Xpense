@@ -1,8 +1,8 @@
-import { Sequelize } from "sequelize";
-import tokens from "../tokens.js";
+const { Sequelize } = require('sequelize');
+const tokens = require('../tokens.js');
 const sequelizeConnection = new Sequelize('xpensedb', 'mutabazi', tokens.passwordConnect, {
     host: 'localhost',
     dialect: 'mysql'
 });
 
-export default sequelizeConnection;
+module.exports = sequelizeConnection;

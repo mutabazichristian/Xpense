@@ -1,5 +1,5 @@
-import mysql from "mysql";
-import tokens from "./../tokens.js";
+const mysql = require('mysql');
+const tokens = require('../tokens.js');
 
 const passwordConnect = tokens.passwordConnect;
 const dbOptions = {
@@ -13,5 +13,4 @@ const dbOptions = {
 var mysqlConnection = mysql.createConnection(dbOptions);
 mysqlConnection.connect();
 
-export default mysqlConnection;
- 
+module.exports = mysqlConnection;

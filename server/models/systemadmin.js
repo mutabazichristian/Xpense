@@ -1,8 +1,10 @@
 'use strict';
-import { DataTypes, Model } from "sequelize";
-import db from './index.js';
+const { DataTypes, Model } =require ("sequelize");
 
-const { sequelize } = db;
+module.exports=(sequelize,DataTypes)=>{
+
+
+
 
 class SystemAdmin extends Model {
   /**
@@ -22,10 +24,22 @@ SystemAdmin.init({
   },
   username: DataTypes.TEXT,
   adminPassword: DataTypes.TEXT,
-  email: DataTypes.TEXT
+  email: DataTypes.TEXT,
+  createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+    
 }, {
   sequelize,
   modelName: 'SystemAdmin',
+  timestamps:true
 });
-
-export default SystemAdmin;
+return SystemAdmin;
+}

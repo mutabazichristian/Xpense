@@ -1,9 +1,8 @@
 'use strict';
-import { Model, DataTypes } from 'sequelize';
-import Feedback from './feedback.js';
-import db from './index.js';
+const { Model, DataTypes } =require ('sequelize');
 
-const { sequelize } = db;
+
+module.exports=(sequelize,DataTypes)=>{
 
 class User extends Model {
   /**
@@ -13,8 +12,7 @@ class User extends Model {
    */
   static associate(models) {
     // define association here
-    this.hasMany(Expense);
-    this.hasMany(Feedback);
+ 
   }
 }
 
@@ -30,11 +28,24 @@ User.init({
   otherName: DataTypes.TEXT,
   password: DataTypes.TEXT,
   email: DataTypes.TEXT,
-  maxExpense: DataTypes.INTEGER
+  maxExpense: DataTypes.INTEGER,
+   createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+    
 }, {
   sequelize,
   modelName: 'User',
+  timestamps:true
 });
 
+return User;
 
-export default User;
+}
