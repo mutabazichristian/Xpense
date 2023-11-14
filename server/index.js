@@ -1,6 +1,7 @@
 const cors = require('cors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const sequelizeConnection = require('./config/DB/database.js');
 const expensesRouter = require('./routes/signupRouter.js');
 const signupRouter = require('./routes/signupRouter.js');
@@ -15,10 +16,10 @@ const PORT = process.env.PORT || 8080;
 var corsOptions = {
 	origin: 'http://localhost:3000'
 };
+app.use(bodyParser.json());
 app.use(cors(corsOptions));
 app.use('/login', userRouter);
 app.use('/expenses', expensesRouter);
-console.log(userRouter);
 app.use('/signup', signupRouter);
 
 
