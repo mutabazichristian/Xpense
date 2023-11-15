@@ -4,6 +4,7 @@ import { Cookies, useCookies } from 'react-cookie';
 import HomePage from "../Pages/HomePage";
 import LoginPage from "../Pages/LoginPage";
 import ProtectedRoutes from "../Utils/ProtectedRoutes";
+import SignUpPage from "../Pages/SignUpPage";
 //state..
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
         </Route>
         <Route path='/login' element={<LoginPage email={email} setEmail={setEmail} />} />
+        <Route path='/signup' element={<SignUpPage />} />
       </Routes>
     </BrowserRouter>
   );

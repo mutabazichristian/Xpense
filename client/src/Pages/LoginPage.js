@@ -18,6 +18,9 @@ function Login(props) {
             })
             .catch(err => console.log('error from server',err));
     }
+    function navigateToSignup(){
+        navigate('/signup');
+    }
 
     return (
         <div>
@@ -25,6 +28,10 @@ function Login(props) {
                 <input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button type="submit">Submit</button>
+                <p>
+                    No account?
+                        <button onClick={navigateToSignup}>Sign up</button>
+                </p>
             </form>
         </div>
     );
