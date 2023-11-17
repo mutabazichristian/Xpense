@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
-      autoIncrement: tru
+      autoIncrement: true
     },
     username: DataTypes.TEXT,
     adminPassword: DataTypes.TEXT,

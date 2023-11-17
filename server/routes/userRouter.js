@@ -11,7 +11,8 @@ router.post('/', async (req, res) => {
   
       console.log('is it a success',loginResult.success)
       if (loginResult.success) {
-        res.status(200).json(loginResult.data);
+        res.status(200).json({...loginResult.data});
+        console.log(loginResult.data)
       } else {
         res.status(401).json(loginResult.data);
       }

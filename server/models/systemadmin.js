@@ -3,9 +3,6 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
 
-
-
-
   class SystemAdmin extends Model {
     /**
      * Helper method for defining associations.
