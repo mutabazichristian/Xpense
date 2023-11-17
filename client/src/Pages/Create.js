@@ -1,4 +1,5 @@
 import React from 'react';
+import instance from '../API/index';
 import { useState } from 'react';
 
 function Create() {
@@ -8,6 +9,11 @@ function Create() {
     const [repeatPassword, setRepeatPassword] = useState('');
     const handleSubmit = (event) => {
         event.preventDefault();
+        instance.post('/systemadmin', { username, email, password, repeatPassword })
+        .then((res)=>{
+            console.log('response, creating system admin', res);
+        })
+        .catch(err => console.log('error from server', err))
         console.log('these are the collecte information', username, email, password, repeatPassword)
     }
     return (

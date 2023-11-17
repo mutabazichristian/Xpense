@@ -5,7 +5,7 @@ const sequelizeConnection = require('./config/DB/database.js');
 const expensesRouter = require('./routes/signupRouter.js');
 const signupRouter = require('./routes/signupRouter.js');
 const userRouter = require('./routes/userRouter.js');
-
+const systemadminRouter = require('./routes/systemadminRouter.js')
 console.log("Hi");
 // import userRouter from "./routes/userRouter.js";
 
@@ -20,7 +20,7 @@ app.use(cors(corsOptions));
 app.use('/login', userRouter);
 app.use('/expenses', expensesRouter);
 app.use('/signup', signupRouter);
-
+app.use('/systemadmin', systemadminRouter);
 
 
 sequelizeConnection.authenticate()
