@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "db": "sequelize db:migrate && sequelize db:seed:all",
     "predb": "npm dist",
     "predist": "rm -rf dist",
