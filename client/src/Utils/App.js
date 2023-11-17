@@ -6,6 +6,7 @@ import ProtectedRoutes from "../Utils/ProtectedRoutes";
 import SignUpPage from "../Pages/SignUpPage";
 import SystemAdminPage from "../Pages/SystemAdminPage";
 import UsersAdminPage from "../Pages/UsersAdminPage";
+import Create from "../Pages/Create";
 //state..
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path='/login' element={<LoginPage email={email} setEmail={setEmail} setUserType={setUserType} />} />
           <Route path='/signup' element={<SignUpPage />} />
           <Route path='*' element={<LoginPage email={email} setEmail={setEmail} setUserType={setUserType} />} />
+          <Route path='/create' element={<Create />} />
         </>
         }
       </Routes>

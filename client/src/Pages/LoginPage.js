@@ -28,6 +28,9 @@ function Login(props) {
     function navigateToSignup() {
         navigate("/signup");
     }
+    function navigateToCreate(){
+        navigate('/create')
+    }
 
     return (
         <div>
@@ -53,7 +56,7 @@ function Login(props) {
                     <button onClick={navigateToSignup}>Sign up</button>
                 </p>
                 <p>new system Admin
-                    <button></button>
+                    <button onClick={navigateToCreate}>Create System Admin</button>
                 </p>
             </form>
         </div>
