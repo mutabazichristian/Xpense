@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import instance from "../API";
 import { useNavigate } from 'react-router-dom'
 
@@ -6,13 +6,14 @@ import { useNavigate } from 'react-router-dom'
 function Login(props) {
     const navigate = useNavigate();
     const [password, setPassword] = useState('');
-    const { email, setEmail } = props;
+    const { email, setEmail, setUserType} = props;
     async function handleLogin(event) {
         event.preventDefault();
         await instance.post('/login', { email, password })
             .then(res => {
 
                 console.log("response from server", res);
+                setUserType(res.userType);
                 navigate('/')
                 
             })

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Cookies, useCookies } from 'react-cookie';
 import HomePage from "../Pages/HomePage";
@@ -11,15 +11,16 @@ import UsersAdminPage from "../Pages/UsersAdminPage";
 
 function App() {
   const [email, setEmail] = useState('');
+  const [userType, setUserType] = useState('');
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<ProtectedRoutes />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path='/systemAdmin' element={<SystemAdminPage />} />
-          <Route path='/usersAdmin' element={<UsersAdminPage />} />
+          {userType === 'user' && <Route path='/' element={<HomePage />} />}
+          {userType === 'systemadmin' && <Route path="/" element={<SystemAdminPage />} />}
+          {userType === 'useradmin' && <Route path="/" element={<UsersAdminPage />} />}
         </Route>
-        <Route path='/login' element={<LoginPage email={email} setEmail={setEmail} />} />
+        <Route path='/login' element={<LoginPage email={email} setEmail={setEmail} setUserType={setUserType} />} />
         <Route path='/signup' element={<SignUpPage />} />
       </Routes>
     </BrowserRouter>
