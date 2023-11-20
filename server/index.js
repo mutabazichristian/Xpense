@@ -2,11 +2,10 @@ const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const sequelizeConnection = require('./config/DB/database.js');
-const expensesRouter = require('./routes/signupRouter.js');
+const userRouter = require('./routes/userRouter.js')
 const signupRouter = require('./routes/signupRouter.js');
-const userRouter = require('./routes/userRouter.js');
+const expensesRouter = require('./routes/signupRouter.js');
 const systemadminRouter = require('./routes/systemadminRouter.js')
-console.log("Hi");
 // import userRouter from "./routes/userRouter.js";
 
 const app = express();
@@ -37,26 +36,3 @@ sequelizeConnection.authenticate()
 	.catch((error) => {
 		console.log('unable to connnect to db', error);
 	})
-
-
-// app.use(express.json());
-// app.use(cookieParser());
-// app.use(cors());
-
-// app.use("/login", userRouter);
-// app.use("/signup", userRouter);
-// app.use("/expenses", expensesRouter);
-
-// console.log("trying the db connnection...");
-
-// sequelizeConnection.authenticate();
-// console.log('connection established;');
-
-// app.listen(PORT, () => {
-// 	console.log(`listening on ${PORT}`);
-// })
-
-// app.use((err, req, res, next) => {
-// 	console.error(err.stack);
-// 	res.status(500).send('Something went wrong!');
-// });
