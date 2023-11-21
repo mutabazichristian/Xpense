@@ -12,9 +12,8 @@ const systemadminRouter = require('./routes/systemadminRouter.js')
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-var corsOptions = {
-	origin: 'http://localhost:3000'
-};
+// var corsOptions = {
+// };
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 app.use('/login', userRouter);
@@ -31,7 +30,7 @@ sequelizeConnection.authenticate()
 	.then(() => {
 		app.listen(PORT, () => {
 			console.log(`Server is running on port ${PORT}.`);
-			console.log('this is the env username', process.env.DB_USERNAME);
+			console.log('this is the env username', process.env.DB
 		});
 
 	})
