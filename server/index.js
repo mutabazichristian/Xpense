@@ -30,7 +30,7 @@ sequelizeConnection.authenticate()
 	.then(() => {
 		app.listen(PORT, () => {
 			console.log(`Server is running on port ${PORT}.`);
-			console.log('this is the env username', process.env.DB
+			console.log('this is the env username', process.env.DB)
 		});
 
 	})
