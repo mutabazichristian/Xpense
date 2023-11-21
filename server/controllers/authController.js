@@ -3,7 +3,7 @@ const { User, UserAdmin, SystemAdmin } = require('../models/index.js');
 
 //secret key to encode jwt token for authentication
 const secretKey = process.env.JWT_SECRET_KEY;
-
+//bunch
 
 //function to create JWT token for existing user
 const generateToken = (id, email) => {
