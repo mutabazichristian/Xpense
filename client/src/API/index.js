@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookie from 'js-cookie';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: 'https://angry-bat-ring.cyclic.app/',
 })
 
 instance.interceptors.response.use(function (response) {
