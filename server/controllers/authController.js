@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const { User, UserAdmin, SystemAdmin } = require('../models/index.js');
-const tokens = require('../config/tokens.js');
 
 //secret key to encode jwt token for authentication
 const secretKey = process.env.JWT_SECRET_KEY;
